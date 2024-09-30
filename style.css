@@ -6,7 +6,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #E0F2F1;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -14,7 +14,7 @@ body {
 }
 
 .container {
-    background-color: #fff;
+    background-color: #004D61;
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -25,7 +25,7 @@ body {
 
 h1 {
     margin-bottom: 20px;
-    color: #333;
+    color: #BBDEFB;
 }
 
 form {
@@ -42,12 +42,12 @@ label {
 input {
     padding: 10px;
     font-size: 16px;
-    border: 1px solid #ccc;
+    border: 1px solid #00796B;
     border-radius: 4px;
 }
 
 button {
-    background-color: #28a745;
+    background-color: #00796B;
     color: white;
     padding: 10px;
     font-size: 16px;
@@ -58,11 +58,11 @@ button {
 }
 
 button:hover {
-    background-color: #218838;
+    background-color: #004D61;
 }
 
 #resultado {
     margin-top: 20px;
     font-size: 18px;
-    color: #333;
+    color: #E0F7FA;
 }
