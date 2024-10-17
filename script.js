@@ -1,41 +1,17 @@
-function calcularPrestacao() {
-    const valorFinanciamento = parseFloat(document.getElementById('valorFinanciamento').value);
-    const taxaJuros = parseFloat(document.getElementById('taxaJuros').value);
-    const prazo = parseInt(document.getElementById('prazo').value);
+document.getElementById('financing-form').addEventListener('submit', function(e) {
+    e.preventDefault();
 
-    if (isNaN(valorFinanciamento) || isNaN(taxaJuros) || isNaN(prazo)) {
-        alert("Por favor, insira valores válidos.");
-        return;
-    }
+    const valor = parseFloat(document.getElementById('valor').value);
+    const taxa = parseFloat(document.getElementById('taxa').value) / 100;
+    const meses = parseInt(document.getElementById('meses').value);
 
-    const taxaJurosMensal = (taxaJuros / 100) / 12;
+    // Cálculo da prestação usando o Sistema Price
+    const taxaJuros = Math.pow(1 + taxa, meses) * taxa;
+    const prestacao = (valor * taxaJuros) / (Math.pow(1 + taxa, meses) - 1);
 
-    const prestacao = valorFinanciamento * (taxaJurosMensal * Math.pow((1 + taxaJurosMensal), prazo)) / (Math.pow((1 + taxaJurosMensal), prazo) - 1);
-
-    const resultadoDiv = document.getElementById('resultado');
-    resultadoDiv.innerHTML = `<p>O valor da prestação mensal será: <strong>R$ ${prestacao.toFixed(2)}</strong></p>`;
-
-    gerarDetalhamento(valorFinanciamento, taxaJurosMensal, prazo, prestacao);
-}
-
-function gerarDetalhamento(valorFinanciamento, taxaJurosMensal, prazo, prestacao) {
-    let saldoDevedor = valorFinanciamento;
-    let detalhamento = '<h2>Detalhamento do Pagamento Mensal</h2><table><tr><th>Mês</th><th>Amortização</th><th>Juros</th><th>Prestação</th><th>Saldo Devedor</th></tr>';
-
-    for (let mes = 1; mes <= prazo; mes++) {
-        const jurosMes = saldoDevedor * taxaJurosMensal;
-        const amortizacao = prestacao - jurosMes;
-        saldoDevedor -= amortizacao;
-
-        detalhamento += `<tr>
-            <td>${mes}</td>
-            <td>R$ ${amortizacao.toFixed(2)}</td>
-            <td>R$ ${jurosMes.toFixed(2)}</td>
-            <td>R$ ${prestacao.toFixed(2)}</td>
-            <td>R$ ${saldoDevedor.toFixed(2)}</td>
-        </tr>`;
-    }
-
-    detalhamento += '</table>';
-    document.getElementById('resultado').innerHTML += detalhamento;
-}
+    document.getElementById('resultado').innerHTML = `
+        <h2>Resultado</h2>
+        <p>Prestação Mensal: R$ ${prestacao.toFixed(2)}</p>
+        <p>Total a Pagar: R$ ${(prestacao * meses).toFixed(2)}</p>
+    `;
+});
