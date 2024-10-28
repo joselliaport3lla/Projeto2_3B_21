@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(to right, #0072ff, #00c6ff);
+    background-color: #E0F2F1;
     margin: 0;
     padding: 0;
 }
@@ -37,7 +37,7 @@ input {
 button {
     width: 100%;
     padding: 10px;
-    background-color: #28a745;
+    background-color: #00796B;
     color: white;
     border: none;
     border-radius: 4px;
@@ -45,13 +45,13 @@ button {
 }
 
 button:hover {
-    background-color: #218838;
+    background-color: #004D61;
 }
 
 .resultado {
     margin-top: 20px;
     padding: 10px;
-    background: #e9ecef;
+    background: #E0F7FA;
     border-radius: 4px;
     text-align: center;
 }
